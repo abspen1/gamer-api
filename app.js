@@ -1,4 +1,5 @@
 require('dotenv').config({ path: '.env' })
+require('axios')
 
 const pass = process.env.COD
 const email = process.env.EMAIL
