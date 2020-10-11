@@ -1,0 +1,22 @@
+{
+  "name": "modern-warfare",
+  "version": "1.0.0",
+  "description": "This project was made to have some fun interacting with Call of Duty API and using a twitter bot written in Go. The twitter bot is running on my back-end server and will tweet out when it receives a post request with authentification from this script. The twitter bot written in Go source code is [here](https://github.com/abspen1/go-backend)!",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abspen1/gamer-api.git"
+  },
+  "author": "Austin Spencer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abspen1/gamer-api/issues"
+  },
+  "homepage": "https://github.com/abspen1/gamer-api#readme",
+  "dependencies": {
+    "axios": "^0.20.0"
+  }
+}
