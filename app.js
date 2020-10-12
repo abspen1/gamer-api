@@ -16,7 +16,6 @@ let winLoss = ""
 let team1Score = 0
 let team2Score = 0
 let mode = ""
-
 var postData = new Object()
 postData.Auth = auth
 let jsonData
@@ -89,14 +88,15 @@ setInterval(function(){ // Set interval for checking
                     let matchID = data.matches[i].matchID.toString()
                     let wlRes = data.matches[i].result
                     client.sismember("pr_matches", matchID).then(function (res) {
-                        if (res !== true) {
-                            flag = true
+                        console.log(res)
+                        if (res === 0) { // 0 is false, which means the match id isn't already in our set
+                            flag = true // set flag
                             if (wlRes === "win") {
-                                winCount++
+                                winCount++ // increment global winCount if win
                             } else {
-                                lossCount++
+                                lossCount++ // else increment global lossCount
                             }
-                            saddMatch(matchID)
+                            saddMatch(matchID) // add the matchID to our redis set
                         }
                     })
                 }
@@ -108,10 +108,10 @@ setInterval(function(){ // Set interval for checking
         });
     }
     if(date.getMinutes() === 1) {
-        if (flag) {
+        if (flag === true) {
             setUpTweet() // There were new games so send tweet
-        } else {
-            console.log("No new data this hour")
+        // } else {
+            // No new data this hour
         }
     }
     if(date.getMinutes() === 10) {
