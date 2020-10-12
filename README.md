@@ -4,14 +4,15 @@ This project was made to have some fun interacting with Call of Duty API and usi
 # Functions
 * Every hour checks API to see if there are new games played, if so make a post request to back-end server to tweet a tweet in this format:
 
-The boys have been playing Call of Duty, in the past hour they are <wins> - <losses>. Their most recent game was a <win/loss> in <game type> at <map> <score - score>! 
+The boys have been playing Call of Duty, in the past hour they are < wins > - < losses >. Their most recent game was a < win/loss > in < game type > at < map > < score1 > - < score2 >! 
 #GoBot
 
 * Once a week checks API to get the weekly stats for multiple users:
 
-<user>'s Call of Duty stats for the past week: \nKills: <kills>
-KD: <kd>
-Win/Loss: <wl>
+< user >'s Call of Duty stats for the past week: 
+Kills: < kills >
+KD: < kd >
+Win/Loss: < wl >
 
 # Dependencies
 * Redis - [ioredis](https://www.npmjs.com/package/ioredis)
