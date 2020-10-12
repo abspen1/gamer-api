@@ -79,13 +79,17 @@ setInterval(function(){ // Set interval for checking
     if(date.getMinutes() === 0){ // Check the time for beginning of an hour
         API.login(email, pass).then(data => {
             API.MWcombatmp("pr1vateryan2097", API.platforms.psn).then(data => {
+                let operations = 0
                 for (i in data.matches) {
+                    if (operations === 0){ // The first match is most recent
+                        winLoss = data.matches[i].result
+                        team1Score = data.matches[i].team1Score
+                        team2Score = data.matches[i].team2Score
+                        mode = data.matches[i].mode
+                        operations++
+                    }
                     let matchID = data.matches[i].matchID.toString()
-                    winLoss = data.matches[i].result
                     let wlRes = data.matches[i].result
-                    team1Score = data.matches[i].team1Score
-                    team2Score = data.matches[i].team2Score
-                    mode = data.matches[i].mode
                     client.sismember("pr_matches", matchID).then(function (res) {
                         if (res !== true) {
                             flag = true
