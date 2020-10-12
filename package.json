@@ -17,6 +17,9 @@
   },
   "homepage": "https://github.com/abspen1/gamer-api#readme",
   "dependencies": {
-    "axios": "^0.20.0"
+    "axios": "^0.20.0",
+    "call-of-duty-api": "^1.2.16",
+    "dotenv": "^8.2.0",
+    "ioredis": "^4.17.3"
   }
 }
