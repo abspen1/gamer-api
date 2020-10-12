@@ -30,8 +30,6 @@ var client = new Redis({
 
 // Test Redis connection
 client.get("foo").then((res) => console.log(res))
-// client.del("pr_matches")
-// client.smembers("pr_matches").then((res) => console.log(res))
 
 //Call of Duty API functions
 const API = require('call-of-duty-api')({ platform: "battle" });
@@ -111,18 +109,17 @@ setInterval(function(){ // Set interval for checking
     }
     if(date.getMinutes() === 1) {
         if (flag) {
-            setUpTweet()
+            setUpTweet() // There were new games so send tweet
         } else {
             console.log("No new data this hour")
         }
     }
     if(date.getMinutes() === 10) {
-        clearVars()
+        clearVars() // Clear global vars
     }
     if (date.getUTCDay() === 7 && date.getHours() === 18 && date.getMinutes() === 30){ // Check day of the week for Sunday
         API.login(email, pass).then(data => {     
             API.MWweeklystats("pr1vateryan2097", API.platforms.psn).then(data => {
-                // console.log(data.mp.all.properties);  // see output
                 let kills = data.mp.all.properties.kills
                 let kd = data.mp.all.properties.kdRatio
                 let wl = data.mp.all.properties.wlRatio
@@ -138,7 +135,6 @@ setInterval(function(){ // Set interval for checking
         });
         API.login(email, pass).then(data => {     
             API.MWweeklystats("pteromattical", API.platforms.psn).then(data => {
-                // console.log(data.mp.all.properties);  // see output
                 let kills = data.mp.all.properties.kills
                 let kd = data.mp.all.properties.kdRatio
                 let wl = data.mp.all.properties.wlRatio
@@ -153,66 +149,4 @@ setInterval(function(){ // Set interval for checking
             console.log(err)
         });
     }
-}, 60000); // Repeat every 60000 milliseconds (1 minute)
-
-
-// API.login(email, pass).then(data => {
-//     //I want Warzone Data
-//     API.MWBattleData(user, API.platforms.psn).then(data => {
-//     console.log(data);  // see output
-//     }).catch(err => {
-//         console.log(err);
-//     });
-// }).catch(err => {
-//     console.log(err)
-// });
-
-// API.login(email, pass).then(data => {
-//     API.MWcombatmp("pr1vateryan2097", API.platforms.psn).then(data => {
-//     for (i in data.matches) {
-//         let matchID = data.matches[i].matchID.toString()
-//         result = data.matches[i].result
-//         team1Score = data.matches[i].team1Score
-//         team2Score = data.matches[i].team2Score
-//         mode = data.matches[i].mode
-
-//         if (client.sismember("pr_matches", matchID)) {
-//             continue
-//         } else {
-//             flag = true
-//             if (result == 'win') {
-//                 winCount++
-//             } else {
-//                 lossCount++
-//             }
-//             saddMatch(matchID)
-//         }
-//     }
-//     }).catch(err => {
-//         console.log(err);
-//     });
-    // API.MWFullMatchInfomp("13287832752335928754", API.platforms.psn).then(data => {
-    // console.log(data);  // see output
-    // }).catch(err => {
-    //     console.log(err);
-    // });
-    // API.MWMapList(API.platforms.psn).then(data => {
-    // console.log(data);  // see output
-    // }).catch(err => {
-    //     console.log(err);
-    // });
-    // API.MWweeklystats("pr1vateryan2097", API.platforms.psn).then(data => {
-    // console.log(data.mp.all.properties);  // see output
-    // let kills = data.mp.all.properties.kills
-    // let kd = data.mp.all.properties.kdRatio
-    // let wl = data.mp.all.properties.wlRatio
-    // let message = `pr1vateryan2097 Call of Duty stats for the past week: \nKills: ${kills}\nKD: ${kd}\nWin/Loss: ${wl}`
-    // postData.Message = message
-    // jsonData = JSON.stringify(postData)
-    // postTweet(jsonData)
-    // }).catch(err => {
-    //     console.log(err);
-    // });
-// }).catch(err => {
-//     console.log(err)
-// });
+}, 60000); // Repeat every 60000 milliseconds (1 minute) Will avoid duplicate calls
