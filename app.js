@@ -28,6 +28,8 @@ var client = new Redis({
     db: 3,
 })
 
+// Test Redis connection
+client.get("foo").then((res) => console.log(res))
 // client.del("pr_matches")
 // client.smembers("pr_matches").then((res) => console.log(res))
 
