@@ -62,7 +62,7 @@ function saddMatch(matchID) {
 }
 
 async function setUpTweet() {
-    let message = `The boys have been playing Call of Duty, in the past hour they are ${winCount} - ${lossCount}. Their most recent game was a ${winLoss} in ${mode}, ${team1Score} - ${team2Score}!`
+    let message = `The boys have been playing Call of Duty, in the past hour they are ${winCount} - ${lossCount}. Their most recent game was a ${winLoss} playing ${mode}, ${team1Score} - ${team2Score}!`
     postData.Message = message
     jsonData = JSON.stringify(postData)
     postTweet()
