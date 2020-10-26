@@ -88,7 +88,6 @@ setInterval(function(){ // Set interval for checking
                     let matchID = data.matches[i].matchID.toString()
                     let wlRes = data.matches[i].result
                     client.sismember("pr_matches", matchID).then(function (res) {
-                        console.log(res)
                         if (res === 0) { // 0 is false, which means the match id isn't already in our set
                             flag = true // set flag
                             if (wlRes === "win") {
