@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cod-api
+  namespace: twitter-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cod
+  template:
+    metadata:
+      labels:
+        app: cod
+    spec:
+      containers:
+      - name: cod
+        image: registry:5000/cod-api
+        imagePullPolicy: Always
