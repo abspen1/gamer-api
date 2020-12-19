@@ -1,4 +1,3 @@
-require('dotenv').config({ path: '.env' })
 var Redis = require('ioredis')
 const axios = require('axios')
 
@@ -7,8 +6,8 @@ const pass = process.env.COD
 const email = process.env.EMAIL
 const auth = process.env.SECRET
 const BASE_URL = process.env.BASE_URL
-const host = process.env.HOST
-const redisPass = process.env.REDIS
+const host = process.env.REDIS_HOST
+const redisPass = process.env.REDIS_PASS
 var flag = false
 var winCount = 0
 var lossCount = 0
