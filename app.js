@@ -27,6 +27,7 @@ var client = new Redis({
 })
 
 // Test Redis connection
+client.set("foo", "bar")
 client.get("foo").then((res) => console.log(res))
 
 //Call of Duty API functions
