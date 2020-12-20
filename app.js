@@ -20,10 +20,10 @@ postData.Auth = auth
 let jsonData
 
 var client = new Redis({
-    port: 6379,          // Redis port
-    host: host,   // Redis host
-    password: redisPass,
-    db: 3,
+    port: 6379,             // Redis port
+    host: host,             // Redis host
+    password: redisPass,    // Redis auth
+    db: 5,                  // Redis database
 })
 
 // Test Redis connection
