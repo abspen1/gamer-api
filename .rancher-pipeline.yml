@@ -1,11 +1,17 @@
 stages:
-- name: Build & Publish
-  steps:
-  - publishImageConfig:
-      dockerfilePath: ./Dockerfile
-      buildContext: .
-      tag: cod-api:${CICD_EXECUTION_SEQUENCE}
-- name: Deploy
-  steps:
-  - applyYamlConfig:
-      path: ./cod-dc.yaml
+  - name: Build & Publish
+    when:
+      branch: main
+      event: [push, pull request]
+    steps:
+      - publishImageConfig:
+          dockerfilePath: ./Dockerfile
+          buildContext: .
+          tag: cod-api:${CICD_EXECUTION_SEQUENCE}
+  - name: Deploy
+    when:
+      branch: main
+      event: [push, pull request]
+    steps:
+      - applyYamlConfig:
+          path: ./cod-dc.yaml
